@@ -1,1 +1,1 @@
-# ColorHub
+# Colorist
