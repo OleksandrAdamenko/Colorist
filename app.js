@@ -4,7 +4,7 @@ function generateRandomeColor() {
     // Red = FF0000
     // Green = 00FF00
     // Blue = 0000FF
-    
+
     const hexCods = '0123456789ABCDEF'
 
     let color = ''
@@ -18,8 +18,22 @@ function generateRandomeColor() {
 
 function setRandomColors() {
     cols.forEach(col => {
+        const text = col.querySelector('h2')
+        const button = col.querySelector('button')
+
+        const color = generateRandomeColor()
+
+        text.textContent = color
         col.style.background = generateRandomeColor()
+
+        setTextColor(text, color)
+        setTextColor(button, color)
     })
+}
+
+function setTextColor(text, color) {
+    const luminance = chroma(color).luminance()
+    text.style.color = luminance > 0.5 ? 'black' : 'white'
 }
 
 setRandomColors()
